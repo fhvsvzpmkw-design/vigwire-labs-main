@@ -1,0 +1,53 @@
+name: Bootstrap approved visual assets
+
+on:
+  push:
+    paths:
+      - '.bootstrap-assets/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  build-assets:
+    if: github.event.head_commit.message == 'Trigger approved asset bootstrap'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct approved WebP assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/reference assets/hero assets/characters assets/products assets/banners
+
+          decode_asset() {
+            local source_dir="$1"
+            local target="$2"
+            cat "$source_dir"/part-*.b64 | tr -d '\n\r' | base64 --decode > "$target"
+            test -s "$target"
+          }
+
+          decode_asset .bootstrap-assets/homepage-design assets/reference/homepage-design.webp
+          decode_asset .bootstrap-assets/vigwire-hero assets/hero/vigwire-hero.webp
+          decode_asset .bootstrap-assets/terminal assets/characters/terminal.webp
+          decode_asset .bootstrap-assets/market-bottle assets/characters/market-bottle.webp
+          decode_asset .bootstrap-assets/pulpy assets/characters/pulpy.webp
+          decode_asset .bootstrap-assets/pick-pickle assets/characters/pick-pickle.webp
+          decode_asset .bootstrap-assets/vigscope-team assets/products/vigscope-team.webp
+          decode_asset .bootstrap-assets/tenplay-pulpy assets/products/tenplay-pulpy.webp
+          decode_asset .bootstrap-assets/night-scene assets/banners/night-scene.webp
+
+          rm -rf .bootstrap-assets
+
+      - name: Commit assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'vigwire-asset-bootstrap'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add approved VigWire visual assets'
+          git push
