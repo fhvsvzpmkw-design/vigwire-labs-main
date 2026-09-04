@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>VigWire Labs — Market Intelligence</title>
+  <meta name="description" content="VigWire Labs builds market-intelligence and training tools including VIGscope and TenPlay." />
+  <style>
+    :root{
+      --bg:#020606;
+      --panel:#05100f;
+      --panel2:#061516;
+      --green:#22ff91;
+      --cyan:#20d6ff;
+      --orange:#ff9f1a;
+      --yellow:#ffe04a;
+      --text:#d7fff1;
+      --muted:#9ebfba;
+      --line:#0ebf9f;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        linear-gradient(rgba(0,0,0,.08) 50%,rgba(0,0,0,.22) 50%),
+        radial-gradient(circle at 50% 0,#071617 0,#020606 55%);
+      background-size:100% 4px,100% 100%;
+      color:var(--text);
+      font-family:"Courier New",ui-monospace,SFMono-Regular,Menlo,monospace;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .wrap{width:min(var(--max),calc(100% - 24px));margin:0 auto}
+
+    header{padding:8px 0 0}
+    .titlebar{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:start;
+      padding:6px 12px 8px;
+    }
+    .logo{
+      font-weight:900;
+      letter-spacing:.04em;
+      line-height:.9;
+      font-size:clamp(38px,7vw,86px);
+      color:var(--cyan);
+      text-shadow:0 0 16px rgba(32,214,255,.18);
+    }
+    .logo span{color:var(--green)}
+    .sub{margin-top:4px;font-size:clamp(12px,1.7vw,22px);letter-spacing:.18em;color:var(--green)}
+    .tagline{
+      padding-top:4px;
+      min-width:245px;
+      font-weight:700;
+      line-height:1.14;
+      letter-spacing:.03em;
+      font-size:clamp(13px,1.6vw,20px);
+      color:var(--green);
+    }
+    .tagline .c{color:var(--cyan)}
+    .tagline .o{color:var(--orange)}
+
+    .nav{
+      border:2px solid var(--green);
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      gap:2px;
+      padding:3px;
+      box-shadow:0 0 14px rgba(34,255,145,.08);
+      margin-bottom:16px;
+      overflow:auto;
+      background:#010404;
+    }
+    .nav a{padding:15px 22px;white-space:nowrap;color:#c7e9e2;font-size:14px}
+    .nav a:hover,.nav a.active{background:var(--green);color:#00130a;font-weight:900}
+    .nav .member{margin-left:auto;border:2px solid var(--green);border-radius:5px;color:#00130a;background:var(--green);font-weight:900}
+
+    .hero{
+      border:2px solid var(--cyan);
+      border-radius:8px;
+      overflow:hidden;
+      background:#000;
+      box-shadow:0 0 20px rgba(32,214,255,.08);
+      margin-bottom:16px;
+    }
+    .hero img{width:100%;height:auto}
+    .hero-copy{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      padding:12px 16px 14px;
+      border-top:1px solid #0b6768;
+      align-items:center;
+    }
+    .hero-copy strong{font-size:clamp(18px,2.4vw,30px);color:var(--green)}
+    .hero-copy span{color:#b5d0ca;line-height:1.5}
+
+    .products{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+    .product{
+      border:2px solid var(--cyan);
+      border-radius:8px;
+      padding:16px;
+      background:linear-gradient(180deg,#061114,#020707);
+      min-height:100%;
+    }
+    .product.ten{border-color:var(--orange)}
+    .product h2{font-size:clamp(36px,5vw,62px);margin:0;line-height:.92;color:var(--cyan)}
+    .product.ten h2{color:var(--orange)}
+    .product .strap{font-weight:900;margin:7px 0 10px;color:var(--green);font-size:18px}
+    .product.ten .strap{color:var(--yellow)}
+    .product-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:14px;align-items:center}
+    .product p{color:#c4d7d3;line-height:1.55;margin:0 0 16px;font-size:14px}
+    .product img{width:100%;border-radius:5px}
+    .btn{
+      display:inline-block;
+      border:2px solid var(--green);
+      padding:10px 18px;
+      border-radius:5px;
+      color:var(--green);
+      font-weight:900;
+      box-shadow:0 0 12px rgba(34,255,145,.08);
+    }
+    .ten .btn{border-color:var(--yellow);color:var(--yellow)}
+
+    .section-title{
+      display:flex;align-items:center;gap:10px;
+      font-size:clamp(20px,2.3vw,30px);
+      color:var(--cyan);
+      font-weight:900;
+      margin:8px 0 12px;
+    }
+    .section-title:before{content:"•";color:var(--green)}
+    .section-title:after{content:"";height:2px;background:var(--green);flex:1;box-shadow:0 0 8px rgba(34,255,145,.25)}
+
+    .difference{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      border-top:1px solid #0e7269;border-bottom:1px solid #0e7269;
+      padding:16px 0;margin-bottom:14px;
+      background:rgba(1,12,10,.45);
+    }
+    .diff{padding:4px 20px;text-align:center;border-right:1px solid #167d73}
+    .diff:last-child{border-right:0}
+    .icon{width:54px;height:54px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;color:var(--green);font-size:26px}
+    .diff h3{margin:0 0 7px;color:var(--green);font-size:16px}
+    .diff p{margin:0;color:#c3d5d1;line-height:1.45;font-size:13px}
+
+    .crew{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .crew-card{border:1px solid var(--cyan);background:#030909;padding:10px;text-align:center}
+    .crew-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#000}
+    .crew-card h3{margin:10px 0 4px;color:var(--green);font-size:17px}
+    .crew-card p{margin:0;color:#c5d7d3;font-size:12px;line-height:1.45}
+
+    .interaction-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 16px}
+    .interaction-strip img{width:100%;height:100%;object-fit:cover;border:1px solid #0f6b64;background:#000}
+
+    .lower-banner{border:1px solid var(--cyan);border-radius:8px;overflow:hidden;background:#000;margin:8px 0 18px}
+    .lower-banner img{width:100%;height:auto}
+
+    footer{border-top:1px solid var(--cyan);padding:15px 4px 30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#7bb8b0;font-size:12px}
+    footer nav{display:flex;gap:16px;flex-wrap:wrap}
+    footer .motto{color:var(--green)}
+
+    @media(max-width:900px){
+      .titlebar{grid-template-columns:1fr}.tagline{display:none}
+      .products{grid-template-columns:1fr}
+      .difference{grid-template-columns:1fr 1fr}.diff:nth-child(2){border-right:0}.diff{padding:14px}
+      .crew{grid-template-columns:1fr 1fr}
+      .hero-copy{grid-template-columns:1fr}
+      .nav a{padding:12px 14px}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(var(--max),calc(100% - 12px))}
+      .titlebar{padding-left:2px;padding-right:2px}
+      .logo{font-size:clamp(34px,13vw,60px)}
+      .sub{font-size:11px}
+      .nav .member{margin-left:0}
+      .product-grid{grid-template-columns:1fr}
+      .difference{grid-template-columns:1fr}.diff{border-right:0;border-bottom:1px solid #125b56}.diff:last-child{border-bottom:0}
+      .crew{grid-template-columns:1fr}
+      .interaction-strip{grid-template-columns:1fr}
+      footer{display:block}footer nav{margin-bottom:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header id="home">
+      <div class="titlebar">
+        <div>
+          <div class="logo">VIGWIRE <span>LABS</span></div>
+          <div class="sub">MARKET INTELLIGENCE</div>
+        </div>
+        <div class="tagline">SAME DATA.<br>FRESHER PERSPECTIVE.<br><span class="c">BOTTLE THE EDGE.</span><br>PICK THE VALUE.<br><span class="o">GET PULPY!</span></div>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="active" href="#home">HOME</a>
+        <a href="#products">PRODUCTS</a>
+        <a href="#approach">OUR APPROACH</a>
+        <a href="#characters">CHARACTERS</a>
+        <a href="#about">ABOUT</a>
+        <a href="mailto:hello@vigwirelabs.com">CONTACT</a>
+        <a class="member" href="#member">MEMBER ACCESS →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="assets/hero/vigwire-hero.webp" alt="VigWire Labs terminal, Market Bottle, Pulpy! and Pick Pickle" />
+        <div class="hero-copy">
+          <strong id="hero-title">TURN DATA INTO OPPORTUNITY.</strong>
+          <span>CLEANER MARKETS.<br>SHARPER SIGNALS.<br>A BRIGHTER GAME.</span>
+        </div>
+      </section>
+
+      <section id="products" class="products">
+        <article class="product">
+          <div class="product-grid">
+            <div>
+              <h2>VIGSCOPE</h2>
+              <div class="strap">SEE MORE. BET SMARTER.</div>
+              <p>VIGscope delivers market intelligence, analysis and clear actionable context across major sports. It cuts through the noise, highlights value, tracks pressure and helps surface the edge.</p>
+              <a class="btn" href="https://vigwirelabs.com/" rel="noopener">OPEN VIGSCOPE →</a>
+            </div>
+            <img src="assets/products/vigscope-team.webp" alt="VIGscope market intelligence artwork" />
+          </div>
+        </article>
+
+        <article class="product ten" id="tenplay">
+          <div class="product-grid">
+            <div>
+              <h2>TENPLAY</h2>
+              <div class="strap">PRACTICE. IMPROVE. PLAY SMARTER.</div>
+              <p>TenPlay is our video-poker trainer built to help you learn, practice and master optimal strategy through ten-hand play, instant feedback and a focused interface.</p>
+              <a class="btn" href="#tenplay" aria-label="TenPlay launch link pending final app URL">OPEN TENPLAY →</a>
+            </div>
+            <img src="assets/products/tenplay-pulpy.webp" alt="Pulpy! relaxing with TenPlay" />
+          </div>
+        </article>
+      </section>
+
+      <section id="approach">
+        <div class="section-title">THE VIGWIRE DIFFERENCE</div>
+        <div class="difference">
+          <div class="diff"><div class="icon">▥</div><h3>MARKET INTELLIGENCE</h3><p>Real-time data. Deeper analysis. Clearer signals.</p></div>
+          <div class="diff"><div class="icon">◎</div><h3>VALUE FOCUSED</h3><p>We find edges others miss. It is in the data, not opinions.</p></div>
+          <div class="diff"><div class="icon">⚗</div><h3>DISCIPLINED APPROACH</h3><p>A structured, repeatable process built for the long game.</p></div>
+          <div class="diff"><div class="icon">◉</div><h3>BUILT FOR PLAYERS</h3><p>Created by players, for players.</p></div>
+        </div>
+      </section>
+
+      <section id="characters">
+        <div class="section-title">MEET THE LABS CREW</div>
+        <div class="crew">
+          <article class="crew-card"><img src="assets/characters/market-bottle-pressure.png" alt="The Market Bottle" /><h3>THE MARKET BOTTLE</h3><p>Brings the pressure.<br>Cleaner markets. Sharper signals.</p></article>
+          <article class="crew-card"><img src="assets/characters/pulpy-orange-juice-the-numbers.png" alt="Pulpy!" /><h3>PULPY!</h3><p>Juices the numbers.<br>Fresh perspective. More opportunity.</p></article>
+          <article class="crew-card"><img src="assets/characters/pick-pickle-pick-the-value.png" alt="Pick Pickle" /><h3>PICK PICKLE</h3><p>Finds the value.<br>Cool under pressure.</p></article>
+          <article class="crew-card"><img src="assets/characters/terminal-data-in-edge-out.png" alt="The Terminal" /><h3>THE TERMINAL</h3><p>Handles the data.<br>Finds the signals. Keeps us ahead.</p></article>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">AROUND THE LAB</div>
+        <div class="interaction-strip">
+          <img src="assets/wicked-interactions/01_pulpy-pickle-high-five.png" alt="Pulpy! and Pick Pickle high-five" />
+          <img src="assets/wicked-interactions/02_terminal-pulpy-analyze-together.png" alt="Terminal and Pulpy! analyzing together" />
+          <img src="assets/wicked-interactions/04_market-bottle-bring-the-pressure.png" alt="Market Bottle bringing the pressure" />
+        </div>
+      </section>
+
+      <section class="lower-banner">
+        <img src="assets/banners/vigwire-labs-lower-banner.png" alt="VigWire Labs lower banner with skyline and market signs" />
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer navigation">
+        <a href="#home">HOME</a><a href="#products">PRODUCTS</a><a href="#approach">APPROACH</a><a href="#characters">CHARACTERS</a><a href="#about">ABOUT</a>
+      </nav>
+      <div class="motto">BET SMARTER. PLAY BRIGHTER. &nbsp; VIGWIRE LABS © 2026</div>
+    </footer>
+  </div>
+</body>
+</html>
