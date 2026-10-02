@@ -14,7 +14,7 @@ The page currently provides:
 - Contact via `mudwater365@gmail.com`.
 - Native/fallback sharing from the VigWire Hotline share control.
 
-VIGscope is entered through `https://vigwirelabs.com/vigscope`. TenPlay remains its own application and deployment, linked from the main page. Syndicate Hotline opens the existing VigScope syndicate workspace directly at `https://vigwirelabs.com/runner.html#syndicate`.
+VIGscope is entered through `https://vigwirelabs.com/vigscope`. TenPlay remains its own application and deployment, linked from the main page. Syndicate Hotline opens the existing VigScope syndicate workspace directly at `https://vigwirelabs.com/vigscope?view=syndicate`.
 
 ## Repository ownership
 
