@@ -9,12 +9,12 @@ The bare root of `https://vigwirelabs.com/` is the VigWire Labs corporate landin
 The page currently provides:
 
 - VigWire Labs brand and navigation.
-- Product entry points for VIGscope and TenPlay.
+- Product entry points for VigScope, TenPlay, and Syndicate Hotline.
 - The VigWire Labs crew and supporting brand artwork.
 - Contact via `mudwater365@gmail.com`.
 - Native/fallback sharing from the VigWire Hotline share control.
 
-VIGscope is entered through `https://vigwirelabs.com/vigscope`. TenPlay remains its own application and deployment, linked from the main page.
+VIGscope is entered through `https://vigwirelabs.com/vigscope`. TenPlay remains its own application and deployment, linked from the main page. Syndicate Hotline opens the existing VigScope syndicate workspace directly at `https://vigwirelabs.com/runner.html#syndicate`.
 
 ## Repository ownership
 
